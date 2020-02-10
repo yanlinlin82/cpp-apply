@@ -1,33 +1,33 @@
 # How simple could it be to apply a function on each element in vector?
 
+## Question
+
 Suppose we have a function:
 
 ```cpp
 int sqr(int x) { return x * x; }
 ```
 
-How can we apply it to a vector?
+How can we apply it to a vector (or list)?
+
+## STL answer
 
 STL provides a function `transform` to achieve this:
 
 ```cpp
-vector<int> a = { 1, 3, 5, 7, 9 };
-vector<int> b(a.size());
-transform(a.begin(), a.end(), b.begin(), sqr);
+vector<int> dst(src.size());
+transform(src.begin(), src.end(), dst.begin(), sqr);
 ```
+
+## My answer
 
 In this repo, I constructed a function template, which could make this easier:
 
 ```cpp
-template <typename container, typename function>
-container operator % (function f, container i)
-{
-	container o(i.size());
-	transform(i.begin(), i.end(), o.begin(), f);
-	return o;
-}
-auto c = sqr%(a);
+auto dst = sqr%(src);
 ```
+
+## See also
 
 See more details in [demo.cpp](demo.cpp), and try following:
 
