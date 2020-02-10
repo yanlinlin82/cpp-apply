@@ -20,31 +20,34 @@ ostream& operator << (ostream& os, const container<t>& i)
 	return os;
 }
 
-int sqr(int x) { return x * x; }
+int square(int x) { return x * x; }
 
 int main()
 {
 	// vector
-	vector<int> a = { 1, 3, 5, 7, 9 };
-	cout << "vector   :" << a << endl;
+	{
+		vector<int> src = { 1, 3, 5, 7, 9 };
+		cout << "vector   :" << src << endl;
 
-	vector<int> b(a.size());
-	transform(a.begin(), a.end(), b.begin(), sqr);
-	cout << "transform:" << b << endl;
+		vector<int> dst(src.size());
+		transform(src.begin(), src.end(), dst.begin(), square);
+		cout << "transform:" << dst << endl;
 
-	auto c = sqr%(a);
-	cout << "sqr%     :" << c << endl;
+		auto dst2 = square%(src);
+		cout << "square%  :" << dst2 << endl;
+	}
 
 	// list
-	list<int> d = { 1, 3, 5, 7, 9 };
-	cout << "list     :" << d << endl;
+	{
+		list<int> src = { 1, 3, 5, 7, 9 };
+		cout << "list     :" << src << endl;
 
-	list<int> e(d.size());
-	transform(d.begin(), d.end(), e.begin(), sqr);
-	cout << "transform:" << e << endl;
+		list<int> dst(src.size());
+		transform(src.begin(), src.end(), dst.begin(), square);
+		cout << "transform:" << dst << endl;
 
-	auto f = sqr%(d);
-	cout << "sqr%     :" << f << endl;
-
+		auto dst2 = square%(src);
+		cout << "square%  :" << dst2 << endl;
+	}
 	return 0;
 }

@@ -5,7 +5,7 @@
 Suppose we have a function:
 
 ```cpp
-int sqr(int x) { return x * x; }
+int square(int x) { return x * x; }
 ```
 
 How can we apply it to a vector (or list)?
@@ -16,7 +16,7 @@ STL provides a function `transform` to achieve this:
 
 ```cpp
 vector<int> dst(src.size());
-transform(src.begin(), src.end(), dst.begin(), sqr);
+transform(src.begin(), src.end(), dst.begin(), square);
 ```
 
 ## My answer
@@ -24,7 +24,7 @@ transform(src.begin(), src.end(), dst.begin(), sqr);
 In this repo, I constructed a function template, which could make this easier:
 
 ```cpp
-auto dst = sqr%(src);
+auto dst = square%(src);
 ```
 
 ## See also
@@ -36,8 +36,8 @@ $ g++ -Wall -std=c++17 demo.cpp
 $ ./a.out
 vector   : 1 3 5 7 9
 transform: 1 9 25 49 81
-sqr%     : 1 9 25 49 81
+square%  : 1 9 25 49 81
 list     : 1 3 5 7 9
 transform: 1 9 25 49 81
-sqr%     : 1 9 25 49 81
+square%  : 1 9 25 49 81
 ```
